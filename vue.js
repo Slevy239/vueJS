@@ -36,6 +36,20 @@ Vue.component('product', {
             >Add to Cart</button>
 
         </div>
+
+        <div>
+        <h2>Reviews</h2>
+        <p v-if="!reviews.length">There are no reviews yet.</p>
+        <ul>
+            <li v-for="review in reviews">
+            <p>{{ review.name }}</p>
+            <p>{{ review.review }}</p>
+            <p>Rating: {{ review.rating }}</p>
+
+            </li>
+        </ul>
+        </div>
+
 <product-review @review-submitted="addReview"></product-review>
     </div>
 </div>`,
@@ -76,7 +90,7 @@ Vue.component('product', {
                 this.variants[this.selectedVariant].variantId)
         },
         addReview(productReview) {
-             this.reviews.push(productReview)
+            this.reviews.push(productReview)
         }
     },
     computed: {
@@ -109,7 +123,7 @@ Vue.component('product-review', {
 
 <p>
 <label for="review">Review:</label>
-<textarea id="review" v-model="review"></textarea>
+<textarea id="review" v-model="review" required></textarea>
 </p>
 
 <p>
