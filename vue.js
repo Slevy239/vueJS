@@ -3,7 +3,8 @@ var app = new Vue({
     data: {
         product: 'Socks',
         // Instock: true,
-        inventory: 0,
+        inventory: 20,
+        inStock: true,
         image: 'https://images-na.ssl-images-amazon.com/images/I/81PTFhxgEwL._AC_UL1500_.jpg',
         details: ['80% cotton', '20% polyester', 'Uni-sex'],
         variants: [
@@ -14,7 +15,7 @@ var app = new Vue({
             },
             {
                 variantId: 2235,
-                variantColor: 'white',
+                variantColor: 'red',
                 variantImage: 'https://dks.scene7.com/is/image/GolfGalaxy/SX4445_101-White_FRT?wid=685&fmt=jpg'
             }
         ],
