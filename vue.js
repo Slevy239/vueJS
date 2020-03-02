@@ -1,22 +1,26 @@
 var app = new Vue({
     el: '#app',
     data: {
+        brand: 'Levy',
         product: 'Socks',
         // Instock: true,
-        inventory: 20,
-        inStock: true,
-        image: 'https://images-na.ssl-images-amazon.com/images/I/81PTFhxgEwL._AC_UL1500_.jpg',
+        // inventory: 20,
+        // inStock: true,
+        selectedVariant: 0,
+        // image: 'https://images-na.ssl-images-amazon.com/images/I/81PTFhxgEwL._AC_UL1500_.jpg',
         details: ['80% cotton', '20% polyester', 'Uni-sex'],
         variants: [
             {
                 variantId: 2234,
                 variantColor: "black",
                 variantImage: 'https://images-na.ssl-images-amazon.com/images/I/81PTFhxgEwL._AC_UL1500_.jpg',
+                variantQty: 15
             },
             {
                 variantId: 2235,
                 variantColor: 'red',
-                variantImage: 'https://dks.scene7.com/is/image/GolfGalaxy/SX4445_101-White_FRT?wid=685&fmt=jpg'
+                variantImage: 'https://dks.scene7.com/is/image/GolfGalaxy/SX4445_101-White_FRT?wid=685&fmt=jpg',
+                variantQty: 0,
             }
         ],
         cart: 0
@@ -28,8 +32,20 @@ var app = new Vue({
         removeCart() {
             this.cart -= 1
         },
-        updateProduct(variantImage) {
-            this.image = variantImage
+        updateProduct(index) {
+            this.selectedVariant = index;
+            console.log(index)
+        }
+    },
+    computed: {
+        title() {
+            return this.brand + " " + this.product;
+        },
+        image() {
+            return this.variants[this.selectedVariant].variantImage
+        },
+        inStock() {
+            return this.variants[this.selectedVariant].variantQty
         }
     }
 
