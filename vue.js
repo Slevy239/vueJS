@@ -37,6 +37,8 @@ Vue.component('product', {
 
         </div>
 
+        <product-tabs></product-tabs>
+
         <div>
         <h2>Reviews</h2>
         <p v-if="!reviews.length">There are no reviews yet.</p>
@@ -182,6 +184,24 @@ Vue.component('product-review', {
             }
         }
     }
+})
+
+Vue.component("product-tabs", {
+    template: `
+    <div>
+    <span class="tab"
+    :class="{ activeTab: selectedTab === tab}  "
+    v-for="(tab, index) in tabs" :key="index"
+    @click="selectedTab = tab">
+    {{ tab }}</span>
+    </div>
+     `,
+     data() {
+         return {
+             tabs: ['Reviews', 'Make a Review!'],
+             selectedTab: 'Reviews'
+         }
+     }
 })
 
 
